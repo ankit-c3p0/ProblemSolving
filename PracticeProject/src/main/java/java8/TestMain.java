@@ -1,35 +1,18 @@
 package java8;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class TestMain {
 	
 	public static void main(String[] args) {
-		
-		Emp e1 = new Emp(1, "A");
-		Emp e2 = new Emp(2, "A");
-		Emp e3 = new Emp(3, "A");
-		Emp e4 = new Emp(4, "A");
-		Emp e5 = new Emp(5, "A");
-		
-		List<Emp> empList = new ArrayList<>();
-		empList.add(e1);
-		empList.add(e2);
-		empList.add(e3);
-		empList.add(e4);
-		empList.add(e5);
-		
-		List<Integer> list = empList.stream().map(e -> e.getId()).collect(Collectors.toList());
-		list.forEach(System.out::println);
-		
-//		System.out.println(Optional.of(getValue()));
-		
+	
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setRoundingMode(RoundingMode.HALF_UP);
+		for (Number n : Arrays.asList(12, 123.12345, 0.565, 0.1, 2341234.212431324)) {
+		    Double d = n.doubleValue();
+		    System.out.println(df.format(d));
+		}
 	}
-	public static Integer getValue() {
-		return null;
-	}
-
 }
